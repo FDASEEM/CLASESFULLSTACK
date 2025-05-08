@@ -1,0 +1,37 @@
+package com.hospital_vm.hospital_vm.Services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.hospital_vm.hospital_vm.Repository.PacienteRepository;
+import com.hospital_vm.hospital_vm.Model.Paciente;
+import jakarta.transaction.Transactional;
+import java.util.List;
+
+
+
+@Transactional
+@Service
+public class PacienteService {
+
+    @Autowired
+    private PacienteRepository pacienteRepository;
+
+    public List<Paciente> findAll() {
+        return pacienteRepository.findAll();
+
+    }
+    public Paciente findId(Integer id) {
+        return pacienteRepository.findById(id).get();
+
+    }
+    public Paciente save(Paciente paciente) {
+        return pacienteRepository.save(paciente);
+
+    }
+    public void delete(Integer id) {
+         pacienteRepository.deleteById(id);
+
+    }
+
+}
